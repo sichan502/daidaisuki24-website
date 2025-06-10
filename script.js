@@ -31,6 +31,7 @@ async function fetchData() {
 //        console.log(rows); // Now you can use this data for your inventory
 //      });
     renderCategories();
+    renderStatus();
     renderItems();
   } catch (error) {
     console.error('Error fetching data:', error);
@@ -51,6 +52,20 @@ function renderCategories() {
   });
 }
 
+function renderStatus() {
+  const status = ['All', ...new Set(items.map(item => item[columnIndex.stockStatus]))];
+  console.log("status: ")
+  console.log(status)
+  const select = document.getElementById('statusFilter');
+  select.innerHTML = '';
+  status.forEach(cat => {
+    const option = document.createElement('option');
+    option.value = cat;
+    option.textContent = cat;
+    select.appendChild(option);
+  });
+}
+
 function renderItems() {
   const container = document.getElementById('items');
   container.innerHTML = '';
@@ -58,7 +73,9 @@ function renderItems() {
   const search = document.getElementById('search').value.toLowerCase();
   console.log("search value: " + search)
   const filter = document.getElementById('categoryFilter').value;
-  console.log("filter by: " + filter)
+  console.log("filter by category: " + filter)
+  const status = document.getElementById('statusFilter').value;
+  console.log("filter by status: " + status)
   const sort = document.getElementById('sortFilter').value;
   console.log("sort by: " + sort)
 
@@ -67,13 +84,23 @@ function renderItems() {
 
   let filtered = items.filter(item =>
     (filter === 'All' || item[columnIndex.category] === filter) &&
+    (status === 'All' || item[columnIndex.stockStatus] === status) &&
     item[0].toLowerCase().includes(search)
   );
     console.log("after filtered: ")
     console.log(filtered)
-    let sortBy = sort === 'name' ? columnIndex.name : columnIndex.stockStatus;
+//    let sortBy = sort === 'name' ? columnIndex.name : columnIndex.price;
 
-  filtered.sort((a, b) => a[sortBy].localeCompare(b[sortBy]));
+    switch (sort)
+    {
+        case 'name':
+            filtered.sort((a, b) => a[columnIndex.name].localeCompare(b[columnIndex.name]));
+            break;
+        case 'price':
+            filtered.sort((a, b) => Number(a[columnIndex.price]) - Number(b[columnIndex.price]));
+            break;
+        default:
+    }
 
     console.log("after sort: ")
     console.log(filtered)
@@ -88,6 +115,7 @@ function renderItems() {
       <div class="card-content">
         <h2>${item[columnIndex.name]}</h2>
         <p>${item[columnIndex.category]}</p>
+        <p>${item[columnIndex.price]}</p>
         <p class="stock-status">${item[columnIndex.stockStatus]}</p>
       </div>
     `;
@@ -97,6 +125,7 @@ function renderItems() {
 
 document.getElementById('search').addEventListener('input', renderItems);
 document.getElementById('categoryFilter').addEventListener('change', renderItems);
+document.getElementById('statusFilter').addEventListener('change', renderItems);
 document.getElementById('sortFilter').addEventListener('change', renderItems);
 
 fetchData();
