@@ -9,7 +9,8 @@ const columnIndex = {
   quantity: 3,
   stockStatus: 4,
   onHold: 5,
-  imageURL: 6
+  imageURL: 6,
+  character: 7
 };
 
 
@@ -30,12 +31,27 @@ async function fetchData() {
 //        const rows = data.split("\n").map(row => row.trim().split(","));
 //        console.log(rows); // Now you can use this data for your inventory
 //      });
+    renderCharacters();
     renderCategories();
     renderStatus();
     renderItems();
   } catch (error) {
     console.error('Error fetching data:', error);
   }
+}
+
+function renderCharacters() {
+  const characters = ['All', ...new Set(items.map(item => item[columnIndex.character]))];
+  console.log("characters: ")
+  console.log(characters)
+  const select = document.getElementById('characterFilter');
+  select.innerHTML = '';
+  characters.forEach(cat => {
+    const option = document.createElement('option');
+    option.value = cat;
+    option.textContent = cat;
+    select.appendChild(option);
+  });
 }
 
 function renderCategories() {
@@ -70,8 +86,10 @@ function renderItems() {
   const container = document.getElementById('items');
   container.innerHTML = '';
 
-  const search = document.getElementById('search').value.toLowerCase();
-  console.log("search value: " + search)
+//  const search = document.getElementById('search').value.toLowerCase();
+//  console.log("search value: " + search)
+  const character = document.getElementById('characterFilter').value;
+  console.log("filter by character: " + character)
   const filter = document.getElementById('categoryFilter').value;
   console.log("filter by category: " + filter)
   const status = document.getElementById('statusFilter').value;
@@ -82,11 +100,18 @@ function renderItems() {
     console.log("before filter: ")
     console.log(items)
 
-  let filtered = items.filter(item =>
-    (filter === 'All' || item[columnIndex.category] === filter) &&
-    (status === 'All' || item[columnIndex.stockStatus] === status) &&
-    item[0].toLowerCase().includes(search)
-  );
+//  let filtered = items.filter(item =>
+//    (filter === 'All' || item[columnIndex.category] === filter) &&
+//    (status === 'All' || item[columnIndex.stockStatus] === status) &&
+//    item[0].toLowerCase().includes(search)
+//  );
+
+    let filtered = items.filter(item =>
+        (filter === 'All' || item[columnIndex.category] === filter) &&
+        (status === 'All' || item[columnIndex.stockStatus] === status) &&
+        (character === 'All' || item[columnIndex.character] === character)
+      );
+
     console.log("after filtered: ")
     console.log(filtered)
 //    let sortBy = sort === 'name' ? columnIndex.name : columnIndex.price;
@@ -123,7 +148,8 @@ function renderItems() {
   });
 }
 
-document.getElementById('search').addEventListener('input', renderItems);
+//document.getElementById('search').addEventListener('input', renderItems);
+document.getElementById('characterFilter').addEventListener('change', renderItems);
 document.getElementById('categoryFilter').addEventListener('change', renderItems);
 document.getElementById('statusFilter').addEventListener('change', renderItems);
 document.getElementById('sortFilter').addEventListener('change', renderItems);
