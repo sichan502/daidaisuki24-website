@@ -12,7 +12,7 @@ body {
   margin: 0 auto;
 }
 
-a{
+a {
     text-decoration: none;
 }
 
@@ -20,14 +20,22 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 10px;
   margin-bottom: 1rem;
 }
 
 h1 {
   color: #db2777; /* pink-600 */
   font-weight: 700;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   margin: 0;
+}
+
+nav {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .ig-icon {
@@ -72,6 +80,15 @@ input[type="text"], select {
   color: #be185d; /* pink-700 */
   flex: 1 1 20px;
   min-width: 120px;
+}
+
+select:hover {
+  cursor: pointer;
+}
+
+select:disabled {
+  cursor: not-allowed;
+  background-color: #f0f0f0;
 }
 
 main#items {
@@ -139,5 +156,13 @@ main#items {
 @media (max-width: 640px) {
   .sticky-bar {
     flex-direction: column;
+  }
+
+  h1 {
+    font-size: 1rem;
+  }
+
+  header {
+    margin-bottom: 0.5rem;
   }
 }

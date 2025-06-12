@@ -1,5 +1,22 @@
+const pageName = window.location.pathname.split('/')[2].split('.')[0];
+//console.log(pageName)
+
+let gid = 0;
+
+switch(pageName) {
+    case 'promotion':
+        gid = 387982343;
+        break;
+    case 'coming-soon':
+        gid = 1757031130;
+        break;
+    default:
+        gid = 0;
+}
+
 const SHEET_ID = '2PACX-1vSUFXWjG5LGAQS9lNLYmIglJxESb4jo3F0nQzix13KDa5kY1_BlvhBroSjTDjONdd9sEPQBhfMKHpJ8'
-const SHEET_URL = `https://docs.google.com/spreadsheets/d/e/${SHEET_ID}/pub?output=csv`;
+const SHEET_URL = `https://docs.google.com/spreadsheets/d/e/${SHEET_ID}/pub?gid=${gid}&single=true&output=csv`;
+//console.log(SHEET_URL)
 
 let items = [];
 const columnIndex = {
@@ -23,18 +40,17 @@ async function fetchData() {
     items = data.split("\n").slice(1).map(row => row.trim().split(","));
     console.log("items: ")
     console.log(items)
-    //items = rows.map(row => Object.fromEntries(header.map((h, i) => [h.toLowerCase(), row[i] || ''])));
-    //console.log(items)
-//    fetch(SHEET_URL)
-//      .then(response => response.text())
-//      .then(data => {
-//        const rows = data.split("\n").map(row => row.trim().split(","));
-//        console.log(rows); // Now you can use this data for your inventory
-//      });
+
     renderCharacters();
     renderCategories();
-    renderStatus();
-    renderItems();
+
+    if (pageName === 'index')
+    {
+        renderStatus();
+        renderItems();
+    }
+
+
   } catch (error) {
     console.error('Error fetching data:', error);
   }
@@ -86,8 +102,6 @@ function renderItems() {
   const container = document.getElementById('items');
   container.innerHTML = '';
 
-//  const search = document.getElementById('search').value.toLowerCase();
-//  console.log("search value: " + search)
   const character = document.getElementById('characterFilter').value;
   console.log("filter by character: " + character)
   const filter = document.getElementById('categoryFilter').value;
@@ -100,12 +114,6 @@ function renderItems() {
     console.log("before filter: ")
     console.log(items)
 
-//  let filtered = items.filter(item =>
-//    (filter === 'All' || item[columnIndex.category] === filter) &&
-//    (status === 'All' || item[columnIndex.stockStatus] === status) &&
-//    item[0].toLowerCase().includes(search)
-//  );
-
     let filtered = items.filter(item =>
         (filter === 'All' || item[columnIndex.category] === filter) &&
         (status === 'All' || item[columnIndex.stockStatus] === status) &&
@@ -114,7 +122,6 @@ function renderItems() {
 
     console.log("after filtered: ")
     console.log(filtered)
-//    let sortBy = sort === 'name' ? columnIndex.name : columnIndex.price;
 
     switch (sort)
     {
@@ -148,7 +155,6 @@ function renderItems() {
   });
 }
 
-//document.getElementById('search').addEventListener('input', renderItems);
 document.getElementById('characterFilter').addEventListener('change', renderItems);
 document.getElementById('categoryFilter').addEventListener('change', renderItems);
 document.getElementById('statusFilter').addEventListener('change', renderItems);
