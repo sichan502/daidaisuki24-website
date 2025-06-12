@@ -5,12 +5,12 @@ let items = [];
 const columnIndex = {
   name: 0,
   category: 1,
-  price: 2,
-  quantity: 3,
-  stockStatus: 4,
-  onHold: 5,
-  imageURL: 6,
-  character: 7
+  imageURL: 2,
+  character: 3,
+  price: 4,
+  quantity: 5,
+  stockStatus: 6,
+  onHold: 7
 };
 
 
