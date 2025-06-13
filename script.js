@@ -1,4 +1,6 @@
+// index/promotion/coming-soon
 const pageName = window.location.pathname.split('/')[2].split('.')[0];
+
 //console.log(pageName)
 
 let gid = 0;
@@ -19,6 +21,8 @@ const SHEET_URL = `https://docs.google.com/spreadsheets/d/e/${SHEET_ID}/pub?gid=
 //console.log(SHEET_URL)
 
 let items = [];
+let filteredList = [];
+
 const columnIndex = {
   name: 0,
   category: 1,
@@ -35,8 +39,8 @@ async function fetchData() {
   try {
     const response = await axios.get(SHEET_URL);
     const data = response.data
-    console.log("data: ")
-    console.log(data)
+//    console.log("data: ")
+//    console.log(data)
     items = data.split("\n").slice(1).map(row => row.trim().split(","));
     console.log("items: ")
     console.log(items)
@@ -45,10 +49,9 @@ async function fetchData() {
     renderCategories();
 
     if (pageName === 'index')
-    {
         renderStatus();
-        renderItems();
-    }
+
+     renderItems();
 
 
   } catch (error) {
@@ -58,8 +61,8 @@ async function fetchData() {
 
 function renderCharacters() {
   const characters = ['All', ...new Set(items.map(item => item[columnIndex.character]))];
-  console.log("characters: ")
-  console.log(characters)
+//  console.log("characters: ")
+//  console.log(characters)
   const select = document.getElementById('characterFilter');
   select.innerHTML = '';
   characters.forEach(cat => {
@@ -72,8 +75,8 @@ function renderCharacters() {
 
 function renderCategories() {
   const categories = ['All', ...new Set(items.map(item => item[columnIndex.category]))];
-  console.log("categories: ")
-  console.log(categories)
+//  console.log("categories: ")
+//  console.log(categories)
   const select = document.getElementById('categoryFilter');
   select.innerHTML = '';
   categories.forEach(cat => {
@@ -86,8 +89,8 @@ function renderCategories() {
 
 function renderStatus() {
   const status = ['All', ...new Set(items.map(item => item[columnIndex.stockStatus]))];
-  console.log("status: ")
-  console.log(status)
+//  console.log("status: ")
+//  console.log(status)
   const select = document.getElementById('statusFilter');
   select.innerHTML = '';
   status.forEach(cat => {
@@ -99,13 +102,14 @@ function renderStatus() {
 }
 
 function renderItems() {
+    console.log(pageName)
   const container = document.getElementById('items');
   container.innerHTML = '';
 
   const character = document.getElementById('characterFilter').value;
   console.log("filter by character: " + character)
-  const filter = document.getElementById('categoryFilter').value;
-  console.log("filter by category: " + filter)
+  const category = document.getElementById('categoryFilter').value;
+  console.log("filter by category: " + category)
   const status = document.getElementById('statusFilter').value;
   console.log("filter by status: " + status)
   const sort = document.getElementById('sortFilter').value;
@@ -114,42 +118,52 @@ function renderItems() {
     console.log("before filter: ")
     console.log(items)
 
-    let filtered = items.filter(item =>
-        (filter === 'All' || item[columnIndex.category] === filter) &&
-        (status === 'All' || item[columnIndex.stockStatus] === status) &&
-        (character === 'All' || item[columnIndex.character] === character)
-      );
+    switch (pageName) {
+        case 'coming-soon':
+            filteredList = items.filter(item =>
+                (category === 'All' || item[columnIndex.category] === category) &&
+                (character === 'All' || item[columnIndex.character] === character)
+            );
+            break;
+        default:
+            filteredList = items.filter(item =>
+                (category === 'All' || item[columnIndex.category] === category) &&
+                (status === 'All' || item[columnIndex.stockStatus] === status) &&
+                (character === 'All' || item[columnIndex.character] === character)
+            );
+    }
 
     console.log("after filtered: ")
-    console.log(filtered)
+    console.log(filteredList)
 
-    switch (sort)
-    {
+    switch (sort) {
         case 'name':
-            filtered.sort((a, b) => a[columnIndex.name].localeCompare(b[columnIndex.name]));
+            filteredList.sort((a, b) => a[columnIndex.name].localeCompare(b[columnIndex.name]));
             break;
         case 'price':
-            filtered.sort((a, b) => Number(a[columnIndex.price]) - Number(b[columnIndex.price]));
+            filteredList.sort((a, b) => Number(a[columnIndex.price]) - Number(b[columnIndex.price]));
             break;
         default:
     }
 
     console.log("after sort: ")
-    console.log(filtered)
+    console.log(filteredList)
 
-  filtered.forEach(item => {
+  filteredList.forEach(item => {
     const card = document.createElement('article');
     card.className = 'card';
 
     card.innerHTML = `
       <img src="${item[columnIndex.imageURL]}" alt="${item[columnIndex.name]}" />
-      ${item[columnIndex.stockStatus].toLowerCase().includes("out") ? '<div class="badge">Out of Stock</div>' : ''}
-      <div class="card-content">
+      ${item[columnIndex.stockStatus] && item[columnIndex.stockStatus].toLowerCase().includes("out")
+        ? '<div class="badge">Out of Stock</div>' : ''}
+        <div class="card-content">
         <h2>${item[columnIndex.name]}</h2>
         <p>${item[columnIndex.category]}</p>
         <p>${item[columnIndex.price]}</p>
-        <p class="stock-status">${item[columnIndex.stockStatus]}</p>
-      </div>
+        ${item[columnIndex.stockStatus]
+            ? `<p class="stock-status">${item[columnIndex.stockStatus]}</p>` : ''}
+        </div>
     `;
     container.appendChild(card);
   });
