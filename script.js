@@ -48,7 +48,7 @@ async function fetchData() {
     renderCharacters();
     renderCategories();
 
-    if (pageName === 'index')
+    if (pageName === 'index' || pageName === '')
         renderStatus();
 
      renderItems();
