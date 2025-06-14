@@ -160,7 +160,7 @@ function renderItems() {
         <div class="card-content">
         <h2>${item[columnIndex.name]}</h2>
         <p>${item[columnIndex.category]}</p>
-        <p>${item[columnIndex.price]}</p>
+        <p>$${item[columnIndex.price]}</p>
         ${item[columnIndex.stockStatus]
             ? `<p class="stock-status">${item[columnIndex.stockStatus]}</p>` : ''}
         </div>
