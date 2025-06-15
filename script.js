@@ -61,7 +61,7 @@ async function fetchData() {
 
 function renderCharacters() {
 //  const characters = ['All', ...new Set(items.map(item => item[columnIndex.character]))];
-   const characters = ['All', 'Usagi', 'Hachiware', 'Chiikawa', 'Momonga', 'Kurimanju', 'Rakko', 'Shisa']
+   const characters = ['All', 'Usagi', 'Hachiware', 'Chiikawa', 'Momonga', 'Kurimanju', 'Rakko', 'Shisa', 'Furuhonya']
 //  console.log("characters: ")
 //  console.log(characters)
   const select = document.getElementById('characterFilter');
