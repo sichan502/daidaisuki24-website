@@ -60,7 +60,8 @@ async function fetchData() {
 }
 
 function renderCharacters() {
-  const characters = ['All', ...new Set(items.map(item => item[columnIndex.character]))];
+//  const characters = ['All', ...new Set(items.map(item => item[columnIndex.character]))];
+   const characters = ['All', 'Usagi', 'Hachiware', 'Chiikawa', 'Momonga', 'Kurimanju', 'Rakko', 'Shisa']
 //  console.log("characters: ")
 //  console.log(characters)
   const select = document.getElementById('characterFilter');
@@ -126,11 +127,14 @@ function renderItems() {
             );
             break;
         default:
-            filteredList = items.filter(item =>
-                (category === 'All' || item[columnIndex.category] === category) &&
-                (status === 'All' || item[columnIndex.stockStatus] === status) &&
-                (character === 'All' || item[columnIndex.character] === character)
-            );
+            filteredList = items.filter(item => {
+                return (
+                    (category === 'All' || item[columnIndex.category] === category) &&
+                    (status === 'All' || item[columnIndex.stockStatus] === status) &&
+                    (character === 'All' || (item[columnIndex.character]).split('/').includes(character) )
+                );
+            });
+
     }
 
     console.log("after filtered: ")
