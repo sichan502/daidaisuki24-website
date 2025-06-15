@@ -1,9 +1,11 @@
 // index/promotion/coming-soon
-const pageName = window.location.pathname.split('/')[2].split('.')[0];
+const pageName = window.location.pathname.split('/')[2].split('.')[0] || "index";
 const links = document.querySelectorAll("nav a");
 
-if (pageName === '') {
-    links[0].classList.add("active")
+console.log(pageName)
+
+if (pageName === '' || pageName === 'index') {
+    links[0].classList.add("active");
 }
 else {
     links.forEach(link => {
