@@ -2,7 +2,7 @@
 const pageName = window.location.pathname.split('/')[2].split('.')[0] || "index";
 const links = document.querySelectorAll("nav a");
 
-console.log(pageName)
+//console.log(pageName)
 
 if (pageName === '' || pageName === 'index') {
     links[0].classList.add("active");
@@ -56,8 +56,8 @@ async function fetchData() {
 //    console.log("data: ")
 //    console.log(data)
     items = data.split("\n").slice(1).map(row => row.trim().split(","));
-    console.log("items: ")
-    console.log(items)
+//    console.log("items: ")
+//    console.log(items)
 
     renderCharacters();
     renderCategories();
@@ -127,13 +127,13 @@ function renderItems() {
   container.innerHTML = '';
 
   const character = document.getElementById('characterFilter').value;
-  console.log("filter by character: " + character)
+//  console.log("filter by character: " + character)
   const category = document.getElementById('categoryFilter').value;
-  console.log("filter by category: " + category)
+//  console.log("filter by category: " + category)
   const status = document.getElementById('statusFilter').value;
-  console.log("filter by status: " + status)
+//  console.log("filter by status: " + status)
   const sort = document.getElementById('sortFilter').value;
-  console.log("sort by: " + sort)
+//  console.log("sort by: " + sort)
 
 //    console.log("before filter: ")
 //    console.log(items)
