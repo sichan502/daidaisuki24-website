@@ -2,11 +2,17 @@
 const pageName = window.location.pathname.split('/')[2].split('.')[0];
 const links = document.querySelectorAll("nav a");
 
-links.forEach(link => {
-    if (link.getAttribute("href").split('.')[0] === pageName) {
-        link.classList.add("active");
-    }
-});
+if (pageName === '') {
+    links[0].classList.add("active")
+}
+else {
+    links.forEach(link => {
+        if (link.getAttribute("href").split('.')[0] === pageName) {
+            link.classList.add("active");
+        }
+    });
+}
+
 //console.log(pageName)
 
 let gid = 0;
@@ -109,7 +115,7 @@ function renderStatus() {
 }
 
 function renderItems() {
-    console.log(pageName)
+//    console.log(pageName)
   const container = document.getElementById('items');
   container.innerHTML = '';
 
@@ -122,8 +128,8 @@ function renderItems() {
   const sort = document.getElementById('sortFilter').value;
   console.log("sort by: " + sort)
 
-    console.log("before filter: ")
-    console.log(items)
+//    console.log("before filter: ")
+//    console.log(items)
 
     switch (pageName) {
         case 'coming-soon':
@@ -143,8 +149,8 @@ function renderItems() {
 
     }
 
-    console.log("after filtered: ")
-    console.log(filteredList)
+//    console.log("after filtered: ")
+//    console.log(filteredList)
 
     switch (sort) {
         case 'name':
@@ -156,8 +162,8 @@ function renderItems() {
         default:
     }
 
-    console.log("after sort: ")
-    console.log(filteredList)
+//    console.log("after sort: ")
+//    console.log(filteredList)
 
   filteredList.forEach(item => {
     const card = document.createElement('article');
