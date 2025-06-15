@@ -65,7 +65,8 @@ async function fetchData() {
     if (pageName === 'index' || pageName === '')
         renderStatus();
 
-     renderItems();
+    if (items.length > 0)
+        renderItems();
 
 
   } catch (error) {
