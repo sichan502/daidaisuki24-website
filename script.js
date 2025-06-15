@@ -1,6 +1,12 @@
 // index/promotion/coming-soon
 const pageName = window.location.pathname.split('/')[2].split('.')[0];
+const links = document.querySelectorAll("nav a");
 
+links.forEach(link => {
+    if (link.getAttribute("href").split('.')[0] === pageName) {
+        link.classList.add("active");
+    }
+});
 //console.log(pageName)
 
 let gid = 0;

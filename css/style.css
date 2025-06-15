@@ -38,6 +38,12 @@ nav {
     align-items: center;
 }
 
+nav a.active h1 {
+    color: #ff69b4; /* light pink */
+    text-decoration: underline;
+    font-weight: bold;
+}
+
 .ig-icon {
   width: 30px;
   height: 30px;
