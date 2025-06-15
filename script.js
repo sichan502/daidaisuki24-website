@@ -76,12 +76,16 @@ async function fetchData() {
 
 function renderCharacters() {
 //  const characters = ['All', ...new Set(items.map(item => item[columnIndex.character]))];
-   const characters = ['All', 'Usagi', 'Hachiware', 'Chiikawa', 'Momonga', 'Kurimanju', 'Rakko', 'Shisa', 'Furuhonya']
-//  console.log("characters: ")
-//  console.log(characters)
+   const characters = ['Usagi', 'Hachiware', 'Chiikawa', 'Momonga', 'Kurimanju', 'Rakko', 'Shisa', 'Furuhonya',
+            'Sanrio', 'SpyxFamily', 'Sumikko Gurashi', 'Pug', 'Mogura Croquette', 'Haikyu']
+   characters.sort();
+
+   const characterList = ['All', ...characters]
+//  console.log("characterList: ")
+//  console.log(characterList)
   const select = document.getElementById('characterFilter');
   select.innerHTML = '';
-  characters.forEach(cat => {
+  characterList.forEach(cat => {
     const option = document.createElement('option');
     option.value = cat;
     option.textContent = cat;
