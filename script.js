@@ -139,7 +139,7 @@ function renderItems() {
         case 'coming-soon':
             filteredList = items.filter(item =>
                 (category === 'All' || item[columnIndex.category] === category) &&
-                (character === 'All' || item[columnIndex.character] === character)
+                (character === 'All' || (item[columnIndex.character]).split('/').includes(character))
             );
             break;
         default:
@@ -147,7 +147,7 @@ function renderItems() {
                 return (
                     (category === 'All' || item[columnIndex.category] === category) &&
                     (status === 'All' || item[columnIndex.stockStatus] === status) &&
-                    (character === 'All' || (item[columnIndex.character]).split('/').includes(character) )
+                    (character === 'All' || (item[columnIndex.character]).split('/').includes(character))
                 );
             });
 
