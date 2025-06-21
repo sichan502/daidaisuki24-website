@@ -20,7 +20,9 @@ else {
 let gid = 0;
 
 switch(pageName) {
-    case 'promotion':
+    case 'preorder':
+        gid = 1117783480;
+    case 'restocking':
         gid = 387982343;
         break;
     case 'coming-soon':
@@ -178,11 +180,11 @@ function renderItems() {
       ${item[columnIndex.stockStatus] && item[columnIndex.stockStatus].toLowerCase().includes("out")
         ? '<div class="badge">Out of Stock</div>' : ''}
         <div class="card-content">
-        <h2>${item[columnIndex.name]}</h2>
-        <p>${item[columnIndex.category]}</p>
-        <p>${"$" + item[columnIndex.price]}</p>
-        ${item[columnIndex.stockStatus]
-            ? `<p class="stock-status">${item[columnIndex.stockStatus]}</p>` : ''}
+            <h2>${item[columnIndex.name]}</h2>
+            <p>${item[columnIndex.category]}</p>
+            <p>${"$" + item[columnIndex.price]}</p>
+            ${item[columnIndex.stockStatus]
+                ? `<p class="stock-status">${item[columnIndex.stockStatus]}</p>` : ''}
         </div>
     `;
     container.appendChild(card);

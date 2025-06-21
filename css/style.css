@@ -44,6 +44,8 @@ nav a.active h1 {
     font-weight: bold;
 }
 
+
+
 .ig-icon {
   width: 30px;
   height: 30px;
@@ -156,6 +158,25 @@ main#items {
   font-weight: 600;
   color: #db2777; /* pink-600 */
   margin-top: 0.25rem;
+}
+
+.card-content .promo-name {
+  font-size: 1rem;
+  font-weight: bold;
+  color: black;
+  margin-top: 0.5rem;
+}
+
+.card-content .promo-link {
+  display: inline-block;
+  margin-top: 0.5em;
+  color: #d63384;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.card-content .promo-link:hover {
+  text-decoration: underline;
 }
 
 /* Responsive tweaks */
