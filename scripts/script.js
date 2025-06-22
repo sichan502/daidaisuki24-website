@@ -22,6 +22,7 @@ let gid = 0;
 switch(pageName) {
     case 'preorder':
         gid = 1117783480;
+        break;
     case 'restocking':
         gid = 387982343;
         break;
