@@ -2,7 +2,7 @@
 const pageName = window.location.pathname.split('/')[1] || "";
 const links = document.querySelectorAll("nav a");
 
-console.log(pageName)
+//console.log(pageName)
 
 if (pageName === '' ) {
     links[0].classList.add("active");
@@ -182,8 +182,10 @@ function renderItems() {
         ? '<div class="badge">Out of Stock</div>' : ''}
         <div class="card-content">
             <h2>${item[columnIndex.name]}</h2>
-            <p>${item[columnIndex.category]}</p>
-            <p>${"$" + item[columnIndex.price]}</p>
+            <p>
+              ${item[columnIndex.stockStatus] && item[columnIndex.stockStatus].toLowerCase().includes("out") ? "" :
+              "$" + item[columnIndex.price]}
+            </p>
             ${item[columnIndex.stockStatus]
                 ? `<p class="stock-status">${item[columnIndex.stockStatus]}</p>` : ''}
         </div>
