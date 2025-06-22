@@ -17,13 +17,6 @@ else {
 
 //console.log(pageName)
 
-fetch('/.netlify/functions/get-secrets')
-  .then(res => res.json())
-  .then(data => {
-    console.log("Server response:", data);
-  });
-
-
 let gid = 0;
 
 switch(pageName) {
