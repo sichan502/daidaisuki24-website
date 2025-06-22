@@ -186,7 +186,6 @@ function renderItems() {
               ${item[columnIndex.stockStatus] && item[columnIndex.stockStatus].toLowerCase().includes("out") ? "" :
               "$" + item[columnIndex.price]}
             </p>
-
             ${item[columnIndex.stockStatus]
                 ? `<p class="stock-status">${item[columnIndex.stockStatus]}</p>` : ''}
         </div>
