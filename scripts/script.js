@@ -1,8 +1,8 @@
-// index/promotion/coming-soon
+// index/promotion/coming-soon/info
 const pageName = window.location.pathname.split('/')[2].split('.')[0] || "index";
 const links = document.querySelectorAll("nav a");
 
-//console.log(pageName)
+console.log(pageName)
 
 if (pageName === '' || pageName === 'index') {
     links[0].classList.add("active");
@@ -51,6 +51,10 @@ const columnIndex = {
   onHold: 7
 };
 
+if (pageName !== 'promotion' && pageName !== 'info')
+{
+    fetchData();
+}
 
 async function fetchData() {
   try {
@@ -194,9 +198,52 @@ function renderItems() {
   });
 }
 
-document.getElementById('characterFilter').addEventListener('change', renderItems);
-document.getElementById('categoryFilter').addEventListener('change', renderItems);
-document.getElementById('statusFilter').addEventListener('change', renderItems);
-document.getElementById('sortFilter').addEventListener('change', renderItems);
+const menu = document.getElementById("mobileNav");
+const hamburger = document.querySelector(".hamburger");
 
-fetchData();
+// Toggle menu with animation
+function toggleMenu() {
+    menu.classList.toggle("show");
+
+    if (menu.classList.contains("show")) {
+      document.addEventListener("click", outsideClickListener);
+      window.addEventListener("scroll", closeOnScroll);
+    } else {
+      removeListeners();
+    }
+}
+
+// Close on outside click
+function outsideClickListener(event) {
+    if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
+      closeMenu();
+    }
+}
+
+// Close on scroll
+function closeOnScroll() {
+    closeMenu();
+}
+
+// Close on nav link click
+document.querySelectorAll(".mobile-nav a").forEach(link => {
+    link.addEventListener("click", closeMenu);
+});
+
+function closeMenu() {
+    menu.classList.remove("show");
+    removeListeners();
+}
+
+function removeListeners() {
+    document.removeEventListener("click", outsideClickListener);
+    window.removeEventListener("scroll", closeOnScroll);
+}
+
+['characterFilter', 'categoryFilter', 'statusFilter', 'sortFilter'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) {
+    el.addEventListener('change', renderItems);
+  }
+});
+

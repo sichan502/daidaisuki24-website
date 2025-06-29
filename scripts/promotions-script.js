@@ -43,3 +43,45 @@ async function loadPromotions() {
 }
 
 loadPromotions();
+
+const menu = document.getElementById("mobileNav");
+const hamburger = document.querySelector(".hamburger");
+
+// Toggle menu with animation
+function toggleMenu() {
+    menu.classList.toggle("show");
+
+    if (menu.classList.contains("show")) {
+      document.addEventListener("click", outsideClickListener);
+      window.addEventListener("scroll", closeOnScroll);
+    } else {
+      removeListeners();
+    }
+}
+
+// Close on outside click
+function outsideClickListener(event) {
+    if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
+      closeMenu();
+    }
+}
+
+// Close on scroll
+function closeOnScroll() {
+    closeMenu();
+}
+
+// Close on nav link click
+document.querySelectorAll(".mobile-nav a").forEach(link => {
+    link.addEventListener("click", closeMenu);
+});
+
+function closeMenu() {
+    menu.classList.remove("show");
+    removeListeners();
+}
+
+function removeListeners() {
+    document.removeEventListener("click", outsideClickListener);
+    window.removeEventListener("scroll", closeOnScroll);
+}
