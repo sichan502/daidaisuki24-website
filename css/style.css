@@ -45,6 +45,10 @@ nav a.active h1 {
     font-weight: bold;
 }
 
+.desktop-nav {
+  display: flex;
+}
+
 /* Hamburger styles */
 .hamburger {
     display: none;
@@ -94,6 +98,9 @@ nav a.active h1 {
     padding: 5px 20px;
 }
 
+.site-logo {
+    display: none;
+}
 
 .ig-icon {
   width: 30px;
@@ -249,7 +256,7 @@ main#items {
 
 /* Responsive breakpoint */
 @media (max-width: 768px) {
-    nav {
+    .desktop-nav {
       display: none;
     }
 
@@ -260,16 +267,17 @@ main#items {
     .mobile-nav.show {
       display: flex;
     }
+
+    .site-logo {
+        display: block;
+        margin: 0 auto;
+     }
 }
 
 /* Responsive tweaks */
 @media (max-width: 640px) {
   .sticky-bar {
     flex-direction: column;
-  }
-
-  h1 {
-    font-size: 1rem;
   }
 
   header {
