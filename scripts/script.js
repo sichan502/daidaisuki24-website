@@ -2,7 +2,7 @@
 const pageName = window.location.pathname.split('/')[2].split('.')[0] || "index";
 const links = document.querySelectorAll("nav a");
 
-console.log(pageName)
+//console.log(pageName)
 
 if (pageName === '' || pageName === 'index') {
     links[0].classList.add("active");
