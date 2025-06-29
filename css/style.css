@@ -137,7 +137,7 @@ nav a.active h1 {
   flex-wrap: wrap;
 }
 
-input[type="text"], select {
+select {
   padding: 0.5rem;
   border: 1px solid #f9a8d4; /* pink-300 */
   border-radius: 0.25rem;
@@ -257,30 +257,28 @@ main#items {
 /* Responsive breakpoint */
 @media (max-width: 768px) {
     .desktop-nav {
-      display: none;
+        display: none;
     }
 
     .hamburger {
-      display: flex;
+        display: flex;
     }
 
     .mobile-nav.show {
-      display: flex;
+        display: flex;
     }
 
     .site-logo {
         display: block;
         margin: 0 auto;
+    }
+
+     .sticky-bar {
+        flex-direction: column;
+     }
+
+     header {
+        margin-bottom: 0.5rem;
      }
 }
 
-/* Responsive tweaks */
-@media (max-width: 640px) {
-  .sticky-bar {
-    flex-direction: column;
-  }
-
-  header {
-    margin-bottom: 0.5rem;
-  }
-}
