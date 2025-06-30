@@ -1,21 +1,8 @@
 import { toggleMenu, initMenu } from './sharedFunction.js';
+import { highlightActiveNavLink, pageName } from './sharedFunction.js';
 
-// index/promotion/coming-soon/info
-const pageName = window.location.pathname.split('/')[2].split('.')[0] || "index";
-const links = document.querySelectorAll("nav a");
-
-//console.log(pageName)
-
-if (pageName === '' || pageName === 'index') {
-    links[0].classList.add("active");
-}
-else {
-    links.forEach(link => {
-        if (link.getAttribute("href").split('.')[0] === pageName) {
-            link.classList.add("active");
-        }
-    });
-}
+// apply active nav link
+highlightActiveNavLink();
 
 //console.log(pageName)
 

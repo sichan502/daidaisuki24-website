@@ -1,4 +1,27 @@
 
+// general header active function
+
+// Exported page name
+export const pageName = window.location.pathname.split('/').pop().split('.')[0] || "index";
+
+// Highlight active link in nav
+export function highlightActiveNavLink(navSelector = "nav a") {
+  const links = document.querySelectorAll(navSelector);
+
+  if (pageName === '' || pageName === 'index') {
+    links[0]?.classList.add("active");
+  } else {
+    links.forEach(link => {
+      const linkPage = link.getAttribute("href")?.split('.')[0];
+      if (linkPage === pageName) {
+        link.classList.add("active");
+      }
+    });
+  }
+}
+
+
+
 // hamburger nav bar - menu related function
 // use in script.js and promotions-script.js
 
