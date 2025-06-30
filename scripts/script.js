@@ -1,19 +1,8 @@
-// index/promotion/coming-soon
-const pageName = window.location.pathname.split('/')[2].split('.')[0] || "index";
-const links = document.querySelectorAll("nav a");
+import { toggleMenu, initMenu } from './sharedFunction.js';
+import { highlightActiveNavLink, pageName } from './sharedFunction.js';
 
-//console.log(pageName)
-
-if (pageName === '' || pageName === 'index') {
-    links[0].classList.add("active");
-}
-else {
-    links.forEach(link => {
-        if (link.getAttribute("href").split('.')[0] === pageName) {
-            link.classList.add("active");
-        }
-    });
-}
+// apply active nav link
+highlightActiveNavLink();
 
 //console.log(pageName)
 
@@ -51,6 +40,10 @@ const columnIndex = {
   onHold: 7
 };
 
+if (pageName !== 'promotion' && pageName !== 'info')
+{
+    fetchData();
+}
 
 async function fetchData() {
   try {
@@ -194,9 +187,23 @@ function renderItems() {
   });
 }
 
-document.getElementById('characterFilter').addEventListener('change', renderItems);
-document.getElementById('categoryFilter').addEventListener('change', renderItems);
-document.getElementById('statusFilter').addEventListener('change', renderItems);
-document.getElementById('sortFilter').addEventListener('change', renderItems);
+['characterFilter', 'categoryFilter', 'statusFilter', 'sortFilter'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) {
+    el.addEventListener('change', renderItems);
+  }
+});
 
-fetchData();
+// --------------- hamburger nav bar - menu related function ---------------
+
+// Initialize menu with selectors
+initMenu();
+
+// Attach toggle function
+document.querySelector(".hamburger")?.addEventListener("click", toggleMenu);
+
+// --------------------------------------------------------------------------
+
+
+
+
