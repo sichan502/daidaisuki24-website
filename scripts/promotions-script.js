@@ -1,3 +1,5 @@
+import { toggleMenu, initMenu } from './sharedFunction.js';
+
 // index/promotion/coming-soon
 const pageName = window.location.pathname.split('/')[2].split('.')[0] || "index";
 const links = document.querySelectorAll("nav a");
@@ -44,44 +46,12 @@ async function loadPromotions() {
 
 loadPromotions();
 
-const menu = document.getElementById("mobileNav");
-const hamburger = document.querySelector(".hamburger");
+// --------------- hamburger nav bar - menu related function ---------------
 
-// Toggle menu with animation
-function toggleMenu() {
-    menu.classList.toggle("show");
+// Initialize menu with selectors
+initMenu();
 
-    if (menu.classList.contains("show")) {
-      document.addEventListener("click", outsideClickListener);
-      window.addEventListener("scroll", closeOnScroll);
-    } else {
-      removeListeners();
-    }
-}
+// Attach toggle function
+document.querySelector(".hamburger")?.addEventListener("click", toggleMenu);
 
-// Close on outside click
-function outsideClickListener(event) {
-    if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
-      closeMenu();
-    }
-}
-
-// Close on scroll
-function closeOnScroll() {
-    closeMenu();
-}
-
-// Close on nav link click
-document.querySelectorAll(".mobile-nav a").forEach(link => {
-    link.addEventListener("click", closeMenu);
-});
-
-function closeMenu() {
-    menu.classList.remove("show");
-    removeListeners();
-}
-
-function removeListeners() {
-    document.removeEventListener("click", outsideClickListener);
-    window.removeEventListener("scroll", closeOnScroll);
-}
+// --------------------------------------------------------------------------
