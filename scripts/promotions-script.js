@@ -1,4 +1,4 @@
-/ index/promotion/coming-soon/info
+// index/promotion/coming-soon/info
 
 import { toggleMenu, initMenu } from './sharedFunction.js';
 import { highlightActiveNavLink } from './sharedFunction.js';
