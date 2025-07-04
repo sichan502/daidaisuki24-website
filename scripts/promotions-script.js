@@ -1,19 +1,4 @@
-// index/promotion/coming-soon
-/*const pageName = window.location.pathname.split('/')[1] || "";
-const links = document.querySelectorAll("nav a");
-
-console.log(pageName)
-
-if (pageName === '' ) {
-    links[0].classList.add("active");
-}
-else {
-    links.forEach(link => {
-        if (link.getAttribute("href").split('.')[0] === pageName) {
-            link.classList.add("active");
-        }
-    })
-}*/
+/ index/promotion/coming-soon/info
 
 import { toggleMenu, initMenu } from './sharedFunction.js';
 import { highlightActiveNavLink } from './sharedFunction.js';

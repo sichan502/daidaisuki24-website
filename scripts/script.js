@@ -1,19 +1,4 @@
-// index/promotion/coming-soon
-/*const pageName = window.location.pathname.split('/')[1] || "";
-const links = document.querySelectorAll("nav a");
-
-//console.log(pageName)
-
-if (pageName === '' ) {
-    links[0].classList.add("active");
-}
-else {
-    links.forEach(link => {
-        if (link.getAttribute("href").split('.')[0] === pageName) {
-            link.classList.add("active");
-        }
-    });
-}*/
+// index/promotion/coming-soon/info
 
 import { toggleMenu, initMenu } from './sharedFunction.js';
 import { highlightActiveNavLink, pageName } from './sharedFunction.js';
@@ -203,13 +188,6 @@ function renderItems() {
     container.appendChild(card);
   });
 }
-
-/*document.getElementById('characterFilter').addEventListener('change', renderItems);
-document.getElementById('categoryFilter').addEventListener('change', renderItems);
-document.getElementById('statusFilter').addEventListener('change', renderItems);
-document.getElementById('sortFilter').addEventListener('change', renderItems);
-
-fetchData();*/
 
 ['characterFilter', 'categoryFilter', 'statusFilter', 'sortFilter'].forEach(id => {
   const el = document.getElementById(id);
