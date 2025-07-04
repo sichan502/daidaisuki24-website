@@ -1,5 +1,5 @@
 // index/promotion/coming-soon
-const pageName = window.location.pathname.split('/')[1] || "";
+/*const pageName = window.location.pathname.split('/')[1] || "";
 const links = document.querySelectorAll("nav a");
 
 console.log(pageName)
@@ -13,7 +13,13 @@ else {
             link.classList.add("active");
         }
     })
-}
+}*/
+
+import { toggleMenu, initMenu } from './sharedFunction.js';
+import { highlightActiveNavLink } from './sharedFunction.js';
+
+// apply active nav link
+highlightActiveNavLink();
 
 async function loadPromotions() {
   try {
@@ -43,3 +49,13 @@ async function loadPromotions() {
 }
 
 loadPromotions();
+
+// --------------- hamburger nav bar - menu related function ---------------
+
+// Initialize menu with selectors
+initMenu();
+
+// Attach toggle function
+document.querySelector(".hamburger")?.addEventListener("click", toggleMenu);
+
+// --------------------------------------------------------------------------

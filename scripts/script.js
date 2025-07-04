@@ -1,5 +1,5 @@
 // index/promotion/coming-soon
-const pageName = window.location.pathname.split('/')[1] || "";
+/*const pageName = window.location.pathname.split('/')[1] || "";
 const links = document.querySelectorAll("nav a");
 
 //console.log(pageName)
@@ -13,7 +13,13 @@ else {
             link.classList.add("active");
         }
     });
-}
+}*/
+
+import { toggleMenu, initMenu } from './sharedFunction.js';
+import { highlightActiveNavLink, pageName } from './sharedFunction.js';
+
+// apply active nav link
+highlightActiveNavLink();
 
 //console.log(pageName)
 
@@ -51,6 +57,10 @@ const columnIndex = {
   onHold: 7
 };
 
+if (pageName !== 'promotion' && pageName !== 'info')
+{
+    fetchData();
+}
 
 async function fetchData() {
   try {
@@ -194,9 +204,26 @@ function renderItems() {
   });
 }
 
-document.getElementById('characterFilter').addEventListener('change', renderItems);
+/*document.getElementById('characterFilter').addEventListener('change', renderItems);
 document.getElementById('categoryFilter').addEventListener('change', renderItems);
 document.getElementById('statusFilter').addEventListener('change', renderItems);
 document.getElementById('sortFilter').addEventListener('change', renderItems);
 
-fetchData();
+fetchData();*/
+
+['characterFilter', 'categoryFilter', 'statusFilter', 'sortFilter'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) {
+    el.addEventListener('change', renderItems);
+  }
+});
+
+// --------------- hamburger nav bar - menu related function ---------------
+
+// Initialize menu with selectors
+initMenu();
+
+// Attach toggle function
+document.querySelector(".hamburger")?.addEventListener("click", toggleMenu);
+
+// --------------------------------------------------------------------------
