@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Dai-daisuki24 Official Website | Info</title>
+
+        <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+        <!--        <link rel="manifest" href="./site.webmanifest">-->
+
+        <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;700&display=swap" rel="stylesheet" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" >
+        <link rel="stylesheet" href="css/style.css" />
+
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/lodash/lodash.min.js"></script>
+    </head>
+
+    <body>
+        <div class="container">
+            <header>
+                <!-- Hamburger (visible only on mobile) -->
+                <div class="hamburger">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+
+                <!-- Site logo -->
+                <a href="index" class="site-logo">
+                    <h1>🌸 Dai-daisuki24.us</h1>
+                </a>
+
+                <!-- Desktop nav -->
+                <nav class="desktop-nav">
+                    <a href="index"><h1>🌸 Dai-daisuki24.us</h1></a>
+                    <a href="coming-soon"><h1>Coming Soon</h1></a>
+                    <a href="promotions"><h1>Promotions</h1></a>
+                    <a href="info"><h1>Info</h1></a>
+                </nav>
+
+                <div class="mobile-nav-wrapper">
+                    <div class="mobile-nav" id="mobileNav">
+                        <a href="index"><h1>Home</h1></a>
+                        <a href="coming-soon"><h1>Coming Soon</h1></a>
+                        <a href="promotions"><h1>Promotions</h1></a>
+                        <a href="info"><h1>Info</h1></a>
+                    </div>
+                </div>
+
+                <!-- Instagram icon -->
+                <a href="https://instagram.com/daidaisuki24.us" target="_blank" aria-label="Instagram" class="ig-icon">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </header>
+
+            <div class="sticky-bar"></div>
+
+            <section id="info" class="info-section">
+                <h2>📍 Pick-Up Location Options</h2>
+                <p>You can choose from the following pick-up cities:</p>
+                <ul>
+                    <li><strong>Union City, CA – <span style="color: green;">Free pick-up or delivery</span></strong></li>
+                    <li>San Leandro, CA + $6</li>
+                    <li>San Loreno, CA + $5</li>
+                    <li>Hayward, CA + $3</li>
+                    <li>Fremont, CA + $5</li>
+                    <li>Newark, CA + $3</li>
+                    <li>Milpitas, CA + $7</li>
+                </ul>
+                <p><em>* Free pick-up and delivery is only available within Union City, CA.</em></p>
+
+                <hr>
+
+                <h2>🗺️ Available Pick-Up Locations by City</h2>
+                <div class="pickup-locations">
+                    <h3>Union City, CA - <span style="color: green;">Free pick-up or delivery</span></h3>
+                    <ul>
+                        <li>Cinemark Century Union Landing 25 and XD (32100 Union Landing Blvd, Union City, CA 94587)</li>
+                        <li>Jolibee Union Landing (32460 Dyer St, Union City, CA 94587)</li>
+                        <li>Daiso (1785 Decoto Rd, Union City, CA 94587)</li>
+                        <li>Popeyes (31816 Alvarado Blvd, Union City, CA 94587)</li>
+                    </ul>
+
+                    <h3>San Leandro, CA + $6</h3>
+                    <ul>
+                        <li>In-N-Out (15575 Hesperian Blvd, San Leandro, CA 94579)</li>
+                        <li>Costco (1900 Davis St, San Leandro, CA 94577)</li>
+                        <li>i-Tea (177 Pelton Center Way, San Leandro, CA 94577)</li>
+                    </ul>
+
+                    <h3>San Loreno, CA + $5</h3>
+                    <ul>
+                        <li>KFC (17630 Hesperian Blvd, San Lorenzo, CA 94580)</li>
+                    </ul>
+
+                    <h3>Hayward, CA + $3</h3>
+                    <ul>
+                        <li>Costco (28505 Hesperian Blvd, Hayward, CA 94545)</li>
+                        <li>Southland Mall Round 1 (551 Southland Mall, Hayward, CA 94545)</li>
+                        <li>Sprouts (26207 Mission Blvd, Hayward, CA 94544)</li>
+                    </ul>
+
+                    <h3>Fremont, CA + $5</h3>
+                    <ul>
+                        <li>Fremont Hub - Safeway (39100 Argonaut Way, Fremont, CA 94538)</li>
+                        <li>Ranch 99 (34444 Fremont Blvd, Fremont, CA 94555)</li>
+                        <li>Osaka Marketplace (46881 Warm Springs Blvd, Fremont, CA 94539)</li>
+                    </ul>
+
+                    <h3>Newark, CA + $3</h3>
+                    <ul>
+                        <li>Ranch 99 (35219 Newark Blvd, Newark, CA 94560)</li>
+                        <li>Costco (350 Newpark Mall Rd, Newark, CA 94560)</li>
+                    </ul>
+
+                    <h3>Milpitas, CA + $7</h3>
+                    <ul>
+                        <li>Ranch 99 (Milpitas Square, 338 Barber Ln, Milpitas, CA 95035)</li>
+                        <li>Great Mall - Sukurai kiosk (258 Great Mall Dr, Milpitas, CA 95035)</li>
+                    </ul>
+                </div>
+
+                <hr>
+
+                <h2>📦 Shipping Options</h2>
+                <p>We offer shipping across the U.S. Shipping fees are based on the actual size and weight of your package.</p>
+                <ul>
+                    <li>In general, shipping starts at <strong>$5</strong> for small packages.</li>
+                    <li>Final cost depends on dimensions and total weight.</li>
+                </ul>
+                <p>✨ If you'd like to use shipping, please <strong>provide your ZIP code</strong> and we will give you an estimate before confirming your order.</p>
+
+            </section>
+
+        </div>
+
+        <script type="module" src="scripts/script.js"></script>
+    </body>
+</html>

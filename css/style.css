@@ -21,7 +21,7 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-  margin-bottom: 1rem;
+  position: relative;
 }
 
 h1 {
@@ -36,6 +36,7 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 nav a.active h1 {
@@ -44,7 +45,62 @@ nav a.active h1 {
     font-weight: bold;
 }
 
+.desktop-nav {
+  display: flex;
+}
 
+/* Hamburger styles */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: #ff69b4;
+    transition: background-color 0.3s ease;
+}
+
+.hamburger:hover div {
+  background-color: #ffc0cb;
+}
+
+.mobile-nav-wrapper {
+  position: absolute;
+  top: 60px; /* adjust to match your header height */
+  left: 0;
+  width: 100%;       /* or a fixed max width */
+  z-index: 1000;
+}
+
+.mobile-nav {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: #fff;
+  padding: 0; /* will animate padding separately in JS if needed */
+  width: 100%;
+}
+
+.mobile-nav.show {
+  max-height: 300px; /* adjust to fit your menu height */
+  padding: 10px 0;
+}
+
+.mobile-nav a h1 {
+    font-size: 16px;
+    padding: 5px 20px;
+}
+
+.site-logo {
+    display: none;
+}
 
 .ig-icon {
   width: 30px;
@@ -81,7 +137,7 @@ nav a.active h1 {
   flex-wrap: wrap;
 }
 
-input[type="text"], select {
+select {
   padding: 0.5rem;
   border: 1px solid #f9a8d4; /* pink-300 */
   border-radius: 0.25rem;
@@ -179,17 +235,49 @@ main#items {
   text-decoration: underline;
 }
 
-/* Responsive tweaks */
-@media (max-width: 640px) {
-  .sticky-bar {
-    flex-direction: column;
-  }
+.info-section {
+  padding: 20px;
+  background-color: #fff0f5; /* soft pink */
+  border-radius: 12px;
+  max-width: 700px;
+  margin: auto;
+  line-height: 1.6;
+}
 
-  h1 {
-    font-size: 1rem;
-  }
+.info-section h2 {
+  font-size: 1.5em;
+  margin-top: 1em;
+}
 
-  header {
-    margin-bottom: 0.5rem;
-  }
+.info-section ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+/* Responsive breakpoint */
+@media (max-width: 768px) {
+    .desktop-nav {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .mobile-nav.show {
+        display: flex;
+    }
+
+    .site-logo {
+        display: block;
+        margin: 0 auto;
+    }
+
+     .sticky-bar {
+        flex-direction: column;
+     }
+
+     header {
+        margin-bottom: 0.5rem;
+     }
 }
