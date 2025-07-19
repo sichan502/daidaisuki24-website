@@ -1,7 +1,12 @@
 [
   {
     "image": "images/promotions/promo1.JPG",
-    "name": "10% OFF w/ Action",
+    "name": "\uD83D\uDC4D10% OFF w/ Action\uD83C\uDE39",
     "igLink": "https://www.instagram.com/p/DKlKZrdxfCy/"
+  },
+  {
+    "image": "images/promotions/promo2.JPG",
+    "name": "\uD83C\uDF1ESummer Sale\uD83C\uDE39",
+    "igLink": "https://www.instagram.com/p/DMQ-RdJhAXA/?img_index=1"
   }
 ]
