@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dai-daisuki24 Official Website | Used Book Or Clothing</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+    <!--        <link rel="manifest" href="./site.webmanifest">-->
+
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;700&display=swap" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" >
+    <link rel="stylesheet" href="css/style.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash/lodash.min.js"></script>
+</head>
+
+<body>
+<div class="container">
+    <header>
+        <!-- Hamburger (visible only on mobile) -->
+        <div class="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+
+        <!-- Site logo -->
+        <a href="index.html" class="site-logo">
+            <h1>🌸 Dai-daisuki24.us</h1>
+        </a>
+
+        <!-- Desktop nav -->
+        <nav class="desktop-nav">
+            <a href="index"><h1>🌸 Dai-daisuki24.us</h1></a>
+            <a href="coming-soon"><h1>Coming Soon</h1></a>
+            <a href="usedBookClothing"><h1>Used Book/Clothing</h1></a>
+            <a href="promotions"><h1>Promotions</h1></a>
+            <a href="info"><h1>Info</h1></a>
+        </nav>
+
+        <div class="mobile-nav-wrapper">
+            <div class="mobile-nav" id="mobileNav">
+                <a href="index"><h1>Home</h1></a>
+                <a href="coming-soon"><h1>Coming Soon</h1></a>
+                <a href="usedBookClothing"><h1>Used Book/Clothing</h1></a>
+                <a href="promotions"><h1>Promotions</h1></a>
+                <a href="info"><h1>Info</h1></a>
+            </div>
+        </div>
+
+        <!-- Instagram icon -->
+        <a href="https://instagram.com/daidaisuki24.us" target="_blank" aria-label="Instagram" class="ig-icon">
+            <i class="fab fa-instagram"></i>
+        </a>
+    </header>
+
+    <div class="sticky-bar">
+        <select id="characterFilter" disabled></select>
+        <select id="categoryFilter"></select>
+        <select id="statusFilter"></select>
+        <select id="sortFilter">
+            <option value="name">Sort by Name</option>
+            <option value="price">Sort by Price</option>
+        </select>
+    </div>
+
+    <p>Feel free to DM me on IG if you want to see more details pic/size of clothings. Most of them are in good quality. Thank you :)</p>
+    <main id="items"></main>
+</div>
+
+<script type="module" src="scripts/script.js"></script>
+</body>
+</html>
