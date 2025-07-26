@@ -6,7 +6,7 @@ import { highlightActiveNavLink, pageName } from './sharedFunction.js';
 // apply active nav link
 highlightActiveNavLink();
 
-console.log(pageName)
+//console.log(pageName)
 
 let gid = 0;
 
