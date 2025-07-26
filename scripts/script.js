@@ -20,7 +20,7 @@ switch(pageName) {
     case 'coming-soon':
         gid = 1757031130;
         break;
-    case 'usedBookClothing':
+    case 'usedbookclothing':
         gid = 896955652;
         break;
     default:
