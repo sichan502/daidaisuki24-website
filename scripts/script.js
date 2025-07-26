@@ -18,6 +18,9 @@ switch(pageName) {
     case 'coming-soon':
         gid = 1757031130;
         break;
+    case 'usedBookClothing':
+        gid = 896955652;
+        break;
     default:
         gid = 0;
 }
@@ -55,11 +58,13 @@ async function fetchData() {
 //    console.log("items: ")
 //    console.log(items)
 
-    renderCharacters();
-    renderCategories();
+    if (pageName === 'index' || pageName === '' || pageName === 'coming-soon')
+        renderCharacters();
 
-    if (pageName === 'index' || pageName === '')
+    if (pageName === 'index' || pageName === '' || pageName === 'usedBookClothing')
         renderStatus();
+
+    renderCategories();
 
     if (items.length > 0)
         renderItems();

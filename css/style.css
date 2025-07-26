@@ -255,6 +255,13 @@ main#items {
 }
 
 /* Responsive breakpoint */
+@media (max-width: 910px) {
+    .desktop-nav h1 {
+        font-size: 18px;
+    }
+}
+
+/* Responsive breakpoint */
 @media (max-width: 768px) {
     .desktop-nav {
         display: none;
