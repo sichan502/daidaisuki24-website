@@ -18,7 +18,7 @@ switch(pageName) {
     case 'coming-soon':
         gid = 1757031130;
         break;
-    case 'usedBookClothing':
+    case 'usedbookclothing':
         gid = 896955652;
         break;
     default:
@@ -61,7 +61,7 @@ async function fetchData() {
     if (pageName === 'index' || pageName === '' || pageName === 'coming-soon')
         renderCharacters();
 
-    if (pageName === 'index' || pageName === '' || pageName === 'usedBookClothing')
+    if (pageName === 'index' || pageName === '' || pageName === 'usedbookclothing')
         renderStatus();
 
     renderCategories();
