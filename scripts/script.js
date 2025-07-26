@@ -63,7 +63,7 @@ async function fetchData() {
     if (pageName === 'index' || pageName === '' || pageName === 'coming-soon')
         renderCharacters();
 
-    if (pageName === 'index' || pageName === '' || pageName === 'usedBookClothing')
+    if (pageName === 'index' || pageName === '' || pageName === 'usedbookclothing')
         renderStatus();
 
     renderCategories();
