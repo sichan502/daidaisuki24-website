@@ -1,12 +1,17 @@
 [
   {
     "image": "images/promotions/promo1.JPG",
-    "name": "\uD83D\uDC4D10% OFF w/ Action\uD83C\uDE39",
+    "name": "\uD83C\uDF1ECOMPLETED\uD83C\uDE39",
     "igLink": "https://www.instagram.com/p/DKlKZrdxfCy/"
   },
   {
     "image": "images/promotions/promo2.JPG",
     "name": "\uD83C\uDF1ECOMPLETED\uD83C\uDE39",
     "igLink": "https://www.instagram.com/p/DMQ-RdJhAXA/?img_index=1"
+  },
+  {
+    "image": "images/promotions/85-above-free-shipping.PNG",
+    "name": "\uD83C\uDF1EFree Shipping when purchasing on/over $85\uD83C\uDF1E",
+    "igLink": "https://www.instagram.com/p/DUy0ua6Ekr7/"
   }
 ]
