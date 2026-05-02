@@ -1,5 +1,15 @@
 [
   {
+    "image": "images/promotions/birthday-sale.png",
+    "name": "\uD83C\uDF1EBirthday Sale: 10% OFF ANY ITEM!\uD83C\uDF1E",
+    "igLink": "https://www.instagram.com/p/DX2De89Dj65/"
+  },
+  {
+    "image": "images/promotions/85-above-free-shipping.PNG",
+    "name": "\uD83C\uDF1EFree Shipping when purchasing on/over $85\uD83C\uDF1E",
+    "igLink": "https://www.instagram.com/p/DUy0ua6Ekr7/"
+  },
+  {
     "image": "images/promotions/promo1.JPG",
     "name": "\uD83C\uDF1ECOMPLETED\uD83C\uDE39",
     "igLink": "https://www.instagram.com/p/DKlKZrdxfCy/"
@@ -8,10 +18,5 @@
     "image": "images/promotions/promo2.JPG",
     "name": "\uD83C\uDF1ECOMPLETED\uD83C\uDE39",
     "igLink": "https://www.instagram.com/p/DMQ-RdJhAXA/?img_index=1"
-  },
-  {
-    "image": "images/promotions/85-above-free-shipping.PNG",
-    "name": "\uD83C\uDF1EFree Shipping when purchasing on/over $85\uD83C\uDF1E",
-    "igLink": "https://www.instagram.com/p/DUy0ua6Ekr7/"
   }
 ]
